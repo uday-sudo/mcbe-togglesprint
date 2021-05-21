@@ -1,4 +1,4 @@
 import subprocess
-
-a=subprocess.run(['xdotool','search'],stdout=subprocess.PIPE)
-print(a, type(a))
+def run_out(command_list):
+    a=subprocess.run(command_list,stdout=subprocess.PIPE).stdout.decode('utf-8')
+    return a
