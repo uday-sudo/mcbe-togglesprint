@@ -1,14 +1,15 @@
 import subprocess
-import time
+from time import sleep
 
 def run_out(command_list):
     a=subprocess.run(command_list,stdout=subprocess.PIPE,).stdout.decode('utf-8')
     return a
 
-#name=input("Enter title of app:")
+def k_down():
 
-time.sleep(6)
-doit= run_out(["xdotool","key","r"])
-print('''------------------------------------------------------
-------------------------------------------------------''')
-print(doit)
+#getting window id for minecraft
+x=input("after pressing enter open minecraft within 5 seconds")
+time.sleep(5)
+winkey=run_out(["xdotool","getactivewindow"])
+print("the window id for minecraft is:",winkey)
+
