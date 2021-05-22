@@ -1,5 +1,6 @@
 from subprocess import run, PIPE
 from time import sleep
+from pynput import keyboard
 
 def run_out(command_list):
     a=run(command_list,stdout=PIPE,).stdout.decode('utf-8')
@@ -17,4 +18,30 @@ x=input("after pressing enter open minecraft within 5 seconds")
 sleep(5)
 winkey=run_out(["xdotool","getactivewindow"])
 print("the window id for minecraft is:",winkey)
+
+#From here starts the listening part
+current = set()  #detecting the currently active modifiers
+dwon= False
+combinations=[
+    {keyboard.KeyCode(char='6')},
+    {keyboard.KeyCode(char='^')}
+]
+def on_press(key):
+    if any([key in i for i in combinations]):
+        current.add(key)
+        if any(all(k in current for k in i)for i in combinations):
+            execute()
+
+def  on_release(key):
+    if any(key in i for i in combinations):
+        current.remove(key)
+
+def execute():
+    if dwon:
+        up(winkey)
+    else:
+        dn(winkey)
+
+with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
+    listener.join() #to join listener thread to main thread
 
