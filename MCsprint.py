@@ -27,13 +27,13 @@ combinations=[
     {keyboard.KeyCode(char='^')}
 ]
 def on_press(key):
-    if any([key in i for i in combinations]):
+    if key==keyboard.KeyCode(char='6'):
         current.add(key)
         if any(all(k in current for k in i)for i in combinations):
             execute()
 
 def  on_release(key):
-    if any(key in i for i in combinations):
+    if key==keyboard.KeyCode(char='6'):
         current.remove(key)
 
 def execute():
