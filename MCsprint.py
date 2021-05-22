@@ -37,6 +37,7 @@ def  on_release(key):
         current.remove(key)
 
 def execute():
+    global dwon
     if dwon:
         up(winkey)
         print("lifted ctrl")
