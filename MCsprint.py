@@ -39,8 +39,12 @@ def  on_release(key):
 def execute():
     if dwon:
         up(winkey)
+        print("lifted ctrl")
+        dwon = False
     else:
         dn(winkey)
+        print("Pressed Ctrl")
+        dwon=True
 
 with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
     listener.join() #to join listener thread to main thread
