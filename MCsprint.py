@@ -22,10 +22,10 @@ print("the window id for minecraft is:",winkey)
 #From here starts the listening part
 current = set()  #detecting the currently active modifiers
 dwon= False
-combinations=[
+'''combinations=[
     {keyboard.KeyCode(char='6')},
     {keyboard.KeyCode(char='^')}
-]
+]'''
 def on_press(key):
     if key==keyboard.KeyCode(char='6'):
         current.add(key)
