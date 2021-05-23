@@ -1,6 +1,6 @@
 from subprocess import run, PIPE
 from time import sleep
-from pynput import keyboard
+from pynput import keyboard, listener
 
 def run_out(command_list):
     a=run(command_list,stdout=PIPE,).stdout.decode('utf-8')
@@ -29,8 +29,10 @@ dwon= False
 def on_press(key):
     if key==keyboard.KeyCode(char='6'):
         current.add(key)
-        if any(all(k in current for k in i)for i in combinations):
-            execute()
+        execute()
+    elif key in (keyboard.KeyCode(char='t'), keyboard.Key.esc, keyboard.Key.alt):
+        up(winkey)
+        print("Lifted due to a failsafe")
 
 def  on_release(key):
     if key==keyboard.KeyCode(char='6'):
