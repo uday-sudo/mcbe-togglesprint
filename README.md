@@ -1,5 +1,5 @@
 # mcbe-togglesprint
-Togglesprint for MCPE launcher on linux made my christopherHX
+Togglesprint for MCPE launcher on linux made by christopherHX
 link:  https://github.com/ChristopherHX/linux-packaging-scripts
 
 prerequisites: python3  (uses time.sleep and subprocesses),
