@@ -1,6 +1,6 @@
 from subprocess import run, PIPE
 from time import sleep
-from pynput import keyboard, listener
+from pynput import keyboard
 
 def run_out(command_list):
     a=run(command_list,stdout=PIPE,).stdout.decode('utf-8')
