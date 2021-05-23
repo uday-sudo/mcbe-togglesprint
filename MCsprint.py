@@ -27,12 +27,14 @@ dwon= False
     {keyboard.KeyCode(char='^')}
 ]'''
 def on_press(key):
+    global dwon
     if key==keyboard.KeyCode(char='6'):
         current.add(key)
         execute()
     elif key in (keyboard.KeyCode(char='t'), keyboard.Key.esc, keyboard.Key.alt):
         up(winkey)
         print("Lifted due to a failsafe")
+        dwon = False
 
 def  on_release(key):
     if key==keyboard.KeyCode(char='6'):
